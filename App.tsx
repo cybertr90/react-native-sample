@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import userDataFromJson from "./src/user.json";
+import versionDataFromJson from "./src/version.json";
+import { AuthProvider } from "./src/contexts/authContext";
+import AuthRoute from "./src/components/Auth/AuthRoute";
+console.log("User Data: ", userDataFromJson);
+console.log("Version Data: ", versionDataFromJson);
 export default function App() {
+  let isVersionValid = false;
+  const version = versionDataFromJson.version;
+  
+  if(version === "1.0.0") isVersionValid = true;
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AuthProvider>
+      <NavigationContainer>
+        <AuthRoute />
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
