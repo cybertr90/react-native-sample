@@ -4,8 +4,11 @@ import userDataFromJson from "./src/user.json";
 import versionDataFromJson from "./src/version.json";
 import { AuthProvider } from "./src/contexts/authContext";
 import AuthRoute from "./src/components/Auth/AuthRoute";
+
 console.log("User Data: ", userDataFromJson);
 console.log("Version Data: ", versionDataFromJson);
+
+
 export default function App() {
 
   const version = parseFloat(versionDataFromJson.version);
@@ -19,9 +22,6 @@ export default function App() {
     )
   }
 
-
-  
-  
   return (
     <AuthProvider>
       <NavigationContainer>
