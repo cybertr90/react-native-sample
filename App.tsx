@@ -9,7 +9,7 @@ console.log("Version Data: ", versionDataFromJson);
 export default function App() {
 
   const version = parseFloat(versionDataFromJson.version);
-  const currentVersion = 0.7;
+  const currentVersion = 1;
   if(currentVersion != version){
     Alert.alert("Version Update", "Version is outdated. Will you update it ?",
       [
