@@ -38,12 +38,7 @@ const LoginPage = ({navigation}: any) => {
         <Pressable style={styles.submitPressable} onPress={() => login(user)}>
           <Text style={{ fontSize: 18 }}>Login</Text>
         </Pressable>
-        <Pressable
-          style={styles.registerPressable}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={{ fontSize: 15 }}>Sign Up</Text>
-        </Pressable>
+      
       </View>
     </Layout>
   );

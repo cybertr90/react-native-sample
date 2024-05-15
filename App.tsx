@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BackHandler, Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import userDataFromJson from "./src/user.json";
 import versionDataFromJson from "./src/version.json";
@@ -7,10 +7,20 @@ import AuthRoute from "./src/components/Auth/AuthRoute";
 console.log("User Data: ", userDataFromJson);
 console.log("Version Data: ", versionDataFromJson);
 export default function App() {
-  let isVersionValid = false;
-  const version = versionDataFromJson.version;
+
+  const version = parseFloat(versionDataFromJson.version);
+  const currentVersion = 0.7;
+  if(currentVersion != version){
+    Alert.alert("Version Update", "Version is outdated. Will you update it ?",
+      [
+        {text: "OK",onPress : () => null},
+        {text: "Cancel", onPress: () => BackHandler.exitApp()}
+      ]
+    )
+  }
+
+
   
-  if(version === "1.0.0") isVersionValid = true;
   
   return (
     <AuthProvider>
